@@ -3,170 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - DipenTech AI Solutions</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+    <title>Services - DipenTech</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --primary: #6366f1; --primary-dark: #4f46e5; --secondary: #f43f5e; --dark: #0f172a; --gray: #64748b; --light: #f8fafc; }
+        :root { --primary: #6366f1; --primary-dark: #4f46e5; --dark: #0f172a; --gray: #64748b; --light: #f8fafc; }
         body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; color: var(--dark); background: var(--light); }
-        
         nav { background: var(--dark); padding: 1rem 2rem; position: fixed; width: 100%; top: 0; z-index: 1000; }
         nav .container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         .logo { color: #fff; font-size: 1.5rem; font-weight: 800; text-decoration: none; }
         .logo span { color: var(--primary); }
         nav ul { display: flex; list-style: none; gap: 2rem; }
         nav a { color: #cbd5e1; text-decoration: none; font-weight: 500; }
-        nav a:hover { color: #fff; }
         .nav-cta { background: var(--primary); color: #fff !important; padding: 0.5rem 1.25rem; border-radius: 8px; }
-        
-        .page-hero { background: linear-gradient(135deg, var(--dark), #1e293b); color: #fff; padding: 8rem 2rem 4rem; text-align: center; }
-        .page-hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
-        .page-hero p { font-size: 1.2rem; color: #94a3b8; max-width: 600px; margin: 0 auto; }
-        
-        .services { padding: 5rem 2rem; }
-        .services .container { max-width: 1200px; margin: 0 auto; }
+        .page-header { background: var(--dark); color: #fff; padding: 8rem 2rem 4rem; text-align: center; }
+        .page-header h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .page-header p { color: #94a3b8; font-size: 1.2rem; }
+        .services-section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
         .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-        
-        .service-card { background: #fff; border-radius: 20px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; transition: all 0.3s; }
+        .service-card { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; transition: all 0.3s; }
         .service-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: var(--primary); }
-        .service-icon { font-size: 3rem; margin-bottom: 1.5rem; }
-        .service-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--dark); }
-        .service-card p { color: var(--gray); margin-bottom: 1.5rem; }
-        .service-card ul { list-style: none; margin-bottom: 1.5rem; }
-        .service-card li { padding: 0.5rem 0; color: var(--gray); display: flex; align-items: center; gap: 8px; }
-        .service-card li::before { content: '✓'; color: var(--primary); font-weight: bold; }
-        
-        .btn { display: inline-block; padding: 0.75rem 1.5rem; background: var(--primary); color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600; transition: all 0.3s; }
-        .btn:hover { background: var(--primary-dark); }
-        
-        footer { background: var(--dark); color: #94a3b8; padding: 3rem 2rem; text-align: center; }
-        
-        @media (max-width: 768px) { .services-grid { grid-template-columns: 1fr; } nav ul { display: none; } }
+        .service-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .service-card p { color: var(--gray); margin-bottom: 1rem; }
+        .service-card ul { list-style: none; color: var(--gray); }
+        .service-card li { padding: 0.25rem 0; }
+        .service-card li::before { content: '→'; color: var(--primary); margin-right: 8px; }
+        footer { background: var(--dark); color: #94a3b8; padding: 2rem; text-align: center; margin-top: 4rem; }
+        @media (max-width: 768px) { nav ul { display: none; } .services-grid { grid-template-columns: 1fr; } }
     </style>
-    
-    <!-- TRACKING SCRIPT -->
     <script>
     (function() {
         const TRACKING_API = 'https://web-production-4ec7.up.railway.app/webhook/visitor';
-        const PROJECT_ID = 'dipenswanaitest';
-        if (TRACKING_API.includes('https://web-production-4ec7.up.railway.app')) return;
-        
+        const PROJECT_ID = 'dipentech';
         function getSessionId() { let id = sessionStorage.getItem('_swan_sid'); if (!id) { id = 'sess_' + Math.random().toString(36).substr(2, 12) + '_' + Date.now(); sessionStorage.setItem('_swan_sid', id); sessionStorage.setItem('_swan_start', Date.now().toString()); sessionStorage.setItem('_swan_pages', '[]'); } return id; }
-        function trackPage() { let pages = JSON.parse(sessionStorage.getItem('_swan_pages') || '[]'); const path = window.location.pathname; if (pages.length === 0 || pages[pages.length - 1].url !== path) { pages.push({ url: path || '/', title: document.title, time: new Date().toISOString() }); sessionStorage.setItem('_swan_pages', JSON.stringify(pages)); } return pages; }
-        function getDuration() { return Math.round((Date.now() - parseInt(sessionStorage.getItem('_swan_start') || Date.now())) / 1000); }
-        function send(event) { const data = { project_id: PROJECT_ID, session_id: getSessionId(), ip_address: '', current_url: window.location.href, referrer: document.referrer || '', pages_viewed: trackPage(), visit_duration: getDuration(), user_agent: navigator.userAgent, screen_size: screen.width + 'x' + screen.height, timestamp: new Date().toISOString(), event }; if (event === 'exit') navigator.sendBeacon(TRACKING_API, JSON.stringify(data)); else fetch(TRACKING_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data), keepalive: true }).catch(() => {}); }
-        window.addEventListener('load', () => send('pageview'));
-        window.addEventListener('beforeunload', () => send('exit'));
+        function trackPage() { let pages = JSON.parse(sessionStorage.getItem('_swan_pages') || '[]'); const currentPage = { url: window.location.pathname || '/', title: document.title, time: new Date().toISOString() }; if (pages.length === 0 || pages[pages.length - 1].url !== currentPage.url) { pages.push(currentPage); sessionStorage.setItem('_swan_pages', JSON.stringify(pages)); } return pages; }
+        function getDuration() { const start = parseInt(sessionStorage.getItem('_swan_start') || Date.now()); return Math.round((Date.now() - start) / 1000); }
+        function sendTracking(event) { const data = { project_id: PROJECT_ID, session_id: getSessionId(), ip_address: '', current_url: window.location.href, referrer: document.referrer || '', pages_viewed: trackPage(), visit_duration: getDuration(), user_agent: navigator.userAgent, screen_size: screen.width + 'x' + screen.height, timestamp: new Date().toISOString(), event: event }; if (event === 'exit') { navigator.sendBeacon(TRACKING_API, JSON.stringify(data)); } else { fetch(TRACKING_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data), keepalive: true }).catch(() => {}); } }
+        window.addEventListener('load', () => sendTracking('pageview'));
+        window.addEventListener('beforeunload', () => sendTracking('exit'));
+        console.log('🦢 Swan Tracking | Services Page');
     })();
     </script>
 </head>
 <body>
-    <nav>
-        <div class="container">
-            <a href="index.html" class="logo">🚀 Dipen<span>Tech</span></a>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="case-studies.html">Case Studies</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="demo.html" class="nav-cta">Book Demo</a></li>
-            </ul>
-        </div>
-    </nav>
+    <nav><div class="container"><a href="index.html" class="logo">🚀 Dipen<span>Tech</span></a><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="contact.html">Contact</a></li><li><a href="demo.html" class="nav-cta">Book Demo</a></li></ul></div></nav>
     
-    <section class="page-hero">
-        <h1>🛠️ Our Services</h1>
-        <p>Comprehensive AI solutions tailored to your business needs</p>
+    <section class="page-header">
+        <h1>Our Services</h1>
+        <p>End-to-end AI solutions to transform your business</p>
     </section>
     
-    <section class="services">
-        <div class="container">
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🤖</div>
-                    <h3>AI Workflow Automation</h3>
-                    <p>Automate complex business processes with intelligent AI workflows that adapt and learn.</p>
-                    <ul>
-                        <li>No-code workflow builder</li>
-                        <li>100+ pre-built integrations</li>
-                        <li>Custom AI models</li>
-                        <li>Real-time monitoring</li>
-                    </ul>
-                    <a href="demo.html" class="btn">Learn More</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🎯</div>
-                    <h3>AI Lead Generation</h3>
-                    <p>Find and qualify leads automatically with AI-powered prospecting and enrichment.</p>
-                    <ul>
-                        <li>Visitor identification</li>
-                        <li>Company enrichment</li>
-                        <li>Lead scoring</li>
-                        <li>Auto email drafting</li>
-                    </ul>
-                    <a href="demo.html" class="btn">Learn More</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">💬</div>
-                    <h3>AI Chatbots</h3>
-                    <p>Deploy intelligent chatbots that understand context and provide human-like responses.</p>
-                    <ul>
-                        <li>Multi-language support</li>
-                        <li>Knowledge base integration</li>
-                        <li>Human handoff</li>
-                        <li>Analytics dashboard</li>
-                    </ul>
-                    <a href="demo.html" class="btn">Learn More</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3>Data Analytics</h3>
-                    <p>Transform raw data into actionable insights with advanced AI-powered analytics.</p>
-                    <ul>
-                        <li>Predictive analytics</li>
-                        <li>Custom dashboards</li>
-                        <li>Automated reports</li>
-                        <li>Data visualization</li>
-                    </ul>
-                    <a href="demo.html" class="btn">Learn More</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">📧</div>
-                    <h3>Email Automation</h3>
-                    <p>Personalize email campaigns at scale with AI-generated content and smart scheduling.</p>
-                    <ul>
-                        <li>AI copywriting</li>
-                        <li>Smart segmentation</li>
-                        <li>A/B testing</li>
-                        <li>Deliverability optimization</li>
-                    </ul>
-                    <a href="demo.html" class="btn">Learn More</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🔗</div>
-                    <h3>Custom Integrations</h3>
-                    <p>Connect all your tools with custom API integrations built to your specifications.</p>
-                    <ul>
-                        <li>API development</li>
-                        <li>Webhook setup</li>
-                        <li>Data synchronization</li>
-                        <li>Legacy system integration</li>
-                    </ul>
-                    <a href="demo.html" class="btn">Learn More</a>
-                </div>
+    <section class="services-section">
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🤖</div>
+                <h3>AI Workflow Automation</h3>
+                <p>Automate repetitive tasks and streamline your operations with intelligent workflows.</p>
+                <ul><li>Process automation</li><li>Document processing</li><li>Email automation</li><li>Data entry elimination</li></ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Predictive Analytics</h3>
+                <p>Turn your data into actionable insights with our advanced analytics platform.</p>
+                <ul><li>Sales forecasting</li><li>Customer behavior analysis</li><li>Market trend prediction</li><li>Risk assessment</li></ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3>Lead Generation & Scoring</h3>
+                <p>Find and qualify leads automatically with AI-powered prospecting tools.</p>
+                <ul><li>Intent data analysis</li><li>Lead scoring models</li><li>Contact enrichment</li><li>Outreach automation</li></ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💬</div>
+                <h3>Conversational AI</h3>
+                <p>24/7 customer support with intelligent chatbots that understand context.</p>
+                <ul><li>Customer service bots</li><li>Sales assistants</li><li>FAQ automation</li><li>Multi-language support</li></ul>
             </div>
         </div>
     </section>
     
-    <footer>
-        <p>&copy; 2024 DipenTech. All rights reserved.</p>
-    </footer>
+    <footer><p>&copy; 2024 DipenTech. All rights reserved.</p></footer>
 </body>
 </html>

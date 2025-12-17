@@ -7,378 +7,68 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #f43f5e;
-            --dark: #0f172a;
-            --gray: #64748b;
-            --light: #f8fafc;
-        }
-        
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background: var(--light);
-        }
-        
-        /* Navigation */
-        nav {
-            background: var(--dark);
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            color: #fff;
-            font-size: 1.5rem;
-            font-weight: 800;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
+        :root { --primary: #6366f1; --primary-dark: #4f46e5; --secondary: #f43f5e; --dark: #0f172a; --gray: #64748b; --light: #f8fafc; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; color: var(--dark); background: var(--light); }
+        nav { background: var(--dark); padding: 1rem 2rem; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        nav .container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #fff; font-size: 1.5rem; font-weight: 800; text-decoration: none; display: flex; align-items: center; gap: 8px; }
         .logo span { color: var(--primary); }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        nav a {
-            color: #cbd5e1;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a { color: #cbd5e1; text-decoration: none; font-weight: 500; transition: color 0.3s; }
         nav a:hover { color: #fff; }
-        
-        .nav-cta {
-            background: var(--primary);
-            color: #fff !important;
-            padding: 0.5rem 1.25rem;
-            border-radius: 8px;
-            transition: background 0.3s;
-        }
-        
+        .nav-cta { background: var(--primary); color: #fff !important; padding: 0.5rem 1.25rem; border-radius: 8px; transition: background 0.3s; }
         .nav-cta:hover { background: var(--primary-dark); }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
-            color: #fff;
-            padding: 10rem 2rem 6rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-        
-        .hero .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero-content {
-            max-width: 650px;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero p {
-            font-size: 1.25rem;
-            color: #94a3b8;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-        
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .btn-primary {
-            background: var(--primary);
-            color: #fff;
-        }
-        
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
-        }
-        
-        .btn-outline {
-            border: 2px solid #475569;
-            color: #fff;
-        }
-        
-        .btn-outline:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-        
-        /* Stats */
-        .stats {
-            background: #fff;
-            padding: 3rem 2rem;
-            box-shadow: 0 -20px 40px rgba(0,0,0,0.05);
-        }
-        
-        .stats .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            text-align: center;
-        }
-        
-        .stat-item h3 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-item p {
-            color: var(--gray);
-            font-weight: 500;
-        }
-        
-        /* Features */
-        .features {
-            padding: 6rem 2rem;
-            background: var(--light);
-        }
-        
-        .features .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-        
-        .section-header p {
-            color: var(--gray);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        
-        .feature-card {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            transition: all 0.3s;
-            border: 1px solid #e2e8f0;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            border-color: var(--primary);
-        }
-        
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 0.75rem;
-        }
-        
-        .feature-card p {
-            color: var(--gray);
-            line-height: 1.7;
-        }
-        
-        /* CTA Section */
-        .cta {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            padding: 5rem 2rem;
-            text-align: center;
-            color: #fff;
-        }
-        
-        .cta h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-        
-        .cta p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .cta .btn {
-            background: #fff;
-            color: var(--primary);
-        }
-        
-        .cta .btn:hover {
-            background: var(--dark);
-            color: #fff;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: #94a3b8;
-            padding: 4rem 2rem 2rem;
-        }
-        
-        footer .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-        
-        .footer-brand h3 {
-            color: #fff;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-links h4 {
-            color: #fff;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            display: block;
-            padding: 0.4rem 0;
-            transition: color 0.3s;
-        }
-        
+        .hero { background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%); color: #fff; padding: 10rem 2rem 6rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+        .hero .container { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero-content { max-width: 650px; }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero h1 span { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero p { font-size: 1.25rem; color: #94a3b8; margin-bottom: 2rem; line-height: 1.8; }
+        .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 1rem 2rem; border-radius: 10px; font-weight: 600; text-decoration: none; transition: all 0.3s; }
+        .btn-primary { background: var(--primary); color: #fff; }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3); }
+        .btn-outline { border: 2px solid #475569; color: #fff; }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+        .stats { background: #fff; padding: 3rem 2rem; box-shadow: 0 -20px 40px rgba(0,0,0,0.05); }
+        .stats .container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+        .stat-item h3 { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; }
+        .stat-item p { color: var(--gray); font-weight: 500; }
+        .features { padding: 6rem 2rem; background: var(--light); }
+        .features .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 800; color: var(--dark); margin-bottom: 1rem; }
+        .section-header p { color: var(--gray); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .feature-card { background: #fff; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: all 0.3s; border: 1px solid #e2e8f0; }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: var(--primary); }
+        .feature-icon { width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem; }
+        .feature-card h3 { font-size: 1.25rem; font-weight: 700; color: var(--dark); margin-bottom: 0.75rem; }
+        .feature-card p { color: var(--gray); line-height: 1.7; }
+        .cta { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); padding: 5rem 2rem; text-align: center; color: #fff; }
+        .cta h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
+        .cta p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .cta .btn { background: #fff; color: var(--primary); }
+        .cta .btn:hover { background: var(--dark); color: #fff; }
+        footer { background: var(--dark); color: #94a3b8; padding: 4rem 2rem 2rem; }
+        footer .container { max-width: 1200px; margin: 0 auto; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+        .footer-brand h3 { color: #fff; font-size: 1.5rem; margin-bottom: 1rem; }
+        .footer-links h4 { color: #fff; font-size: 1rem; margin-bottom: 1rem; }
+        .footer-links ul { list-style: none; }
+        .footer-links a { color: #94a3b8; text-decoration: none; display: block; padding: 0.4rem 0; transition: color 0.3s; }
         .footer-links a:hover { color: #fff; }
-        
-        .footer-bottom {
-            border-top: 1px solid #1e293b;
-            padding-top: 2rem;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav ul { display: none; }
-            .hero h1 { font-size: 2.5rem; }
-            .stats .container { grid-template-columns: repeat(2, 1fr); }
-            .features-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
-        }
+        .footer-bottom { border-top: 1px solid #1e293b; padding-top: 2rem; text-align: center; font-size: 0.9rem; }
+        @media (max-width: 768px) { nav ul { display: none; } .hero h1 { font-size: 2.5rem; } .stats .container { grid-template-columns: repeat(2, 1fr); } .features-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; } }
     </style>
     
-    <!-- SWAN AI TRACKING SCRIPT - PRODUCTION -->
+    <!-- SWAN AI TRACKING SCRIPT - PRODUCTION (FIXED) -->
     <script>
     (function() {
-        // ⚠️ IMPORTANT: Update this URL after deploying backend to Railway
+        // ✅ YOUR RAILWAY BACKEND URL
         const TRACKING_API = 'https://web-production-4ec7.up.railway.app/webhook/visitor';
-        const PROJECT_ID = 'dipenswanaitest';
-        
-        // Skip if placeholder URL
-        if (TRACKING_API.includes('https://web-production-4ec7.up.railway.app')) {
-            console.log('⚠️ Swan Tracking: Update TRACKING_API URL in script');
-            return;
-        }
+        const PROJECT_ID = 'dipentech';
         
         function getSessionId() {
             let id = sessionStorage.getItem('_swan_sid');
@@ -393,13 +83,13 @@
         
         function trackPage() {
             let pages = JSON.parse(sessionStorage.getItem('_swan_pages') || '[]');
-            const currentPath = window.location.pathname;
-            if (pages.length === 0 || pages[pages.length - 1].url !== currentPath) {
-                pages.push({
-                    url: currentPath || '/',
-                    title: document.title,
-                    time: new Date().toISOString()
-                });
+            const currentPage = {
+                url: window.location.pathname || '/',
+                title: document.title,
+                time: new Date().toISOString()
+            };
+            if (pages.length === 0 || pages[pages.length - 1].url !== currentPage.url) {
+                pages.push(currentPage);
                 sessionStorage.setItem('_swan_pages', JSON.stringify(pages));
             }
             return pages;
@@ -420,7 +110,7 @@
                 pages_viewed: trackPage(),
                 visit_duration: getDuration(),
                 user_agent: navigator.userAgent,
-                screen_size: `${screen.width}x${screen.height}`,
+                screen_size: screen.width + 'x' + screen.height,
                 timestamp: new Date().toISOString(),
                 event: event
             };
@@ -433,19 +123,23 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data),
                     keepalive: true
-                }).catch(() => {});
+                }).then(r => r.json()).then(d => {
+                    console.log('🦢 Tracking sent:', d);
+                }).catch(e => console.log('Tracking error:', e));
             }
         }
         
+        // Track on page load
         window.addEventListener('load', () => sendTracking('pageview'));
+        
+        // Track on exit
         window.addEventListener('beforeunload', () => sendTracking('exit'));
         
-        console.log('🦢 Swan Tracking Active | Session:', getSessionId());
+        console.log('🦢 Swan AI Tracking Active | Session:', getSessionId());
     })();
     </script>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="container">
             <a href="index.html" class="logo">🚀 Dipen<span>Tech</span></a>
@@ -461,7 +155,6 @@
         </div>
     </nav>
     
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -475,29 +168,15 @@
         </div>
     </section>
     
-    <!-- Stats -->
     <section class="stats">
         <div class="container">
-            <div class="stat-item">
-                <h3>500+</h3>
-                <p>Happy Clients</p>
-            </div>
-            <div class="stat-item">
-                <h3>10M+</h3>
-                <p>Tasks Automated</p>
-            </div>
-            <div class="stat-item">
-                <h3>99.9%</h3>
-                <p>Uptime SLA</p>
-            </div>
-            <div class="stat-item">
-                <h3>24/7</h3>
-                <p>Support</p>
-            </div>
+            <div class="stat-item"><h3>500+</h3><p>Happy Clients</p></div>
+            <div class="stat-item"><h3>10M+</h3><p>Tasks Automated</p></div>
+            <div class="stat-item"><h3>99.9%</h3><p>Uptime SLA</p></div>
+            <div class="stat-item"><h3>24/7</h3><p>Support</p></div>
         </div>
     </section>
     
-    <!-- Features -->
     <section class="features">
         <div class="container">
             <div class="section-header">
@@ -505,85 +184,31 @@
                 <p>We combine AI expertise with business acumen to deliver solutions that actually work</p>
             </div>
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>AI Automation</h3>
-                    <p>Automate repetitive tasks with intelligent workflows that learn and improve over time.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Data Analytics</h3>
-                    <p>Turn your data into actionable insights with our advanced analytics platform.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Lead Generation</h3>
-                    <p>Find and qualify leads automatically with AI-powered prospecting tools.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💬</div>
-                    <h3>AI Chatbots</h3>
-                    <p>24/7 customer support with intelligent chatbots that understand context.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔗</div>
-                    <h3>Integrations</h3>
-                    <p>Connect with 100+ tools including Salesforce, HubSpot, Slack, and more.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Enterprise Security</h3>
-                    <p>SOC 2 compliant with end-to-end encryption and advanced access controls.</p>
-                </div>
+                <div class="feature-card"><div class="feature-icon">🤖</div><h3>AI Automation</h3><p>Automate repetitive tasks with intelligent workflows that learn and improve over time.</p></div>
+                <div class="feature-card"><div class="feature-icon">📊</div><h3>Data Analytics</h3><p>Turn your data into actionable insights with our advanced analytics platform.</p></div>
+                <div class="feature-card"><div class="feature-icon">🎯</div><h3>Lead Generation</h3><p>Find and qualify leads automatically with AI-powered prospecting tools.</p></div>
+                <div class="feature-card"><div class="feature-icon">💬</div><h3>AI Chatbots</h3><p>24/7 customer support with intelligent chatbots that understand context.</p></div>
+                <div class="feature-card"><div class="feature-icon">🔗</div><h3>Integrations</h3><p>Connect with 100+ tools including Salesforce, HubSpot, Slack, and more.</p></div>
+                <div class="feature-card"><div class="feature-icon">🛡️</div><h3>Enterprise Security</h3><p>SOC 2 compliant with end-to-end encryption and advanced access controls.</p></div>
             </div>
         </div>
     </section>
     
-    <!-- CTA -->
     <section class="cta">
         <h2>Ready to Transform Your Business?</h2>
         <p>Join 500+ companies already using DipenTech to automate their workflows and grow faster.</p>
         <a href="demo.html" class="btn">Schedule a Free Demo →</a>
     </section>
     
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3>🚀 DipenTech</h3>
-                    <p>AI-powered solutions for modern businesses. Automate, analyze, and accelerate your growth.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Product</h4>
-                    <ul>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="case-studies.html">Case Studies</a></li>
-                        <li><a href="demo.html">Book Demo</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                    </ul>
-                </div>
+                <div class="footer-brand"><h3>🚀 DipenTech</h3><p>AI-powered solutions for modern businesses. Automate, analyze, and accelerate your growth.</p></div>
+                <div class="footer-links"><h4>Product</h4><ul><li><a href="services.html">Services</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="case-studies.html">Case Studies</a></li><li><a href="demo.html">Book Demo</a></li></ul></div>
+                <div class="footer-links"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li></ul></div>
+                <div class="footer-links"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Cookie Policy</a></li></ul></div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 DipenTech. All rights reserved. | Made with ❤️ for demo purposes</p>
-            </div>
+            <div class="footer-bottom"><p>&copy; 2024 DipenTech. All rights reserved.</p></div>
         </div>
     </footer>
 </body>
