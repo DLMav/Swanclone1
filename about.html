@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - DipenTech AI Solutions</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #6366f1; --primary-dark: #4f46e5; --dark: #0f172a; --gray: #64748b; --light: #f8fafc; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.6; color: var(--dark); background: var(--light); }
+        
+        nav { background: var(--dark); padding: 1rem 2rem; position: fixed; width: 100%; top: 0; z-index: 1000; }
+        nav .container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #fff; font-size: 1.5rem; font-weight: 800; text-decoration: none; }
+        .logo span { color: var(--primary); }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a { color: #cbd5e1; text-decoration: none; font-weight: 500; }
+        .nav-cta { background: var(--primary); color: #fff !important; padding: 0.5rem 1.25rem; border-radius: 8px; }
+        
+        .page-hero { background: linear-gradient(135deg, var(--dark), #1e293b); color: #fff; padding: 8rem 2rem 4rem; text-align: center; }
+        .page-hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+        .page-hero p { font-size: 1.2rem; color: #94a3b8; max-width: 700px; margin: 0 auto; }
+        
+        .about { padding: 5rem 2rem; }
+        .about .container { max-width: 900px; margin: 0 auto; }
+        .about h2 { font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark); }
+        .about p { color: var(--gray); margin-bottom: 1.5rem; font-size: 1.1rem; }
+        
+        .values { padding: 5rem 2rem; background: #fff; }
+        .values .container { max-width: 1200px; margin: 0 auto; }
+        .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+        .value-card { text-align: center; padding: 2rem; }
+        .value-card .icon { font-size: 3rem; margin-bottom: 1rem; }
+        .value-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .value-card p { color: var(--gray); }
+        
+        .team { padding: 5rem 2rem; }
+        .team .container { max-width: 1200px; margin: 0 auto; text-align: center; }
+        .team h2 { font-size: 2rem; font-weight: 700; margin-bottom: 3rem; }
+        .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+        .team-member { text-align: center; }
+        .team-member .avatar { width: 120px; height: 120px; background: linear-gradient(135deg, var(--primary), #f43f5e); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+        .team-member h4 { font-weight: 700; margin-bottom: 0.25rem; }
+        .team-member p { color: var(--gray); font-size: 0.9rem; }
+        
+        footer { background: var(--dark); color: #94a3b8; padding: 3rem 2rem; text-align: center; }
+        
+        @media (max-width: 768px) { .values-grid, .team-grid { grid-template-columns: 1fr; } nav ul { display: none; } }
+    </style>
+    
+    <!-- TRACKING SCRIPT -->
+    <script>
+    (function() {
+        const TRACKING_API = 'https://web-production-4ec7.up.railway.app/webhook/visitor';
+        const PROJECT_ID = 'dipenswanaitest';
+        if (TRACKING_API.includes('https://web-production-4ec7.up.railway.app')) return;
+        
+        function getSessionId() { let id = sessionStorage.getItem('_swan_sid'); if (!id) { id = 'sess_' + Math.random().toString(36).substr(2, 12) + '_' + Date.now(); sessionStorage.setItem('_swan_sid', id); sessionStorage.setItem('_swan_start', Date.now().toString()); sessionStorage.setItem('_swan_pages', '[]'); } return id; }
+        function trackPage() { let pages = JSON.parse(sessionStorage.getItem('_swan_pages') || '[]'); const path = window.location.pathname; if (pages.length === 0 || pages[pages.length - 1].url !== path) { pages.push({ url: path || '/', title: document.title, time: new Date().toISOString() }); sessionStorage.setItem('_swan_pages', JSON.stringify(pages)); } return pages; }
+        function getDuration() { return Math.round((Date.now() - parseInt(sessionStorage.getItem('_swan_start') || Date.now())) / 1000); }
+        function send(event) { const data = { project_id: PROJECT_ID, session_id: getSessionId(), ip_address: '', current_url: window.location.href, referrer: document.referrer || '', pages_viewed: trackPage(), visit_duration: getDuration(), user_agent: navigator.userAgent, screen_size: screen.width + 'x' + screen.height, timestamp: new Date().toISOString(), event }; if (event === 'exit') navigator.sendBeacon(TRACKING_API, JSON.stringify(data)); else fetch(TRACKING_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data), keepalive: true }).catch(() => {}); }
+        window.addEventListener('load', () => send('pageview'));
+        window.addEventListener('beforeunload', () => send('exit'));
+    })();
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">🚀 Dipen<span>Tech</span></a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="case-studies.html">Case Studies</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="demo.html" class="nav-cta">Book Demo</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section class="page-hero">
+        <h1>🏢 About DipenTech</h1>
+        <p>We're on a mission to make AI accessible to every business, helping companies automate, analyze, and accelerate their growth.</p>
+    </section>
+    
+    <section class="about">
+        <div class="container">
+            <h2>Our Story</h2>
+            <p>Founded in 2020, DipenTech started with a simple observation: most businesses were drowning in repetitive tasks that could easily be automated. Our founders, a team of AI researchers and business experts, set out to build tools that would free teams to focus on what matters most.</p>
+            <p>Today, we serve over 500 companies worldwide, from startups to Fortune 500 enterprises. Our AI-powered platform has automated millions of tasks, generated billions in pipeline value, and helped our customers achieve an average of 340% ROI.</p>
+            <p>We believe that AI should be a tool for empowerment, not replacement. Our solutions are designed to augment human capabilities, making teams more productive, decisions more informed, and businesses more competitive.</p>
+        </div>
+    </section>
+    
+    <section class="values">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2rem;">Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="icon">🎯</div>
+                    <h3>Customer First</h3>
+                    <p>Every feature we build starts with a customer problem. We measure our success by your success.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">🚀</div>
+                    <h3>Innovation</h3>
+                    <p>We're constantly pushing the boundaries of what's possible with AI and automation.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">🤝</div>
+                    <h3>Transparency</h3>
+                    <p>No hidden fees, no black boxes. We believe in clear communication and honest pricing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="team">
+        <div class="container">
+            <h2>Leadership Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="avatar">👨‍💼</div>
+                    <h4>Dipen Patel</h4>
+                    <p>CEO & Founder</p>
+                </div>
+                <div class="team-member">
+                    <div class="avatar">👩‍💻</div>
+                    <h4>Sarah Chen</h4>
+                    <p>CTO</p>
+                </div>
+                <div class="team-member">
+                    <div class="avatar">👨‍🔬</div>
+                    <h4>Alex Kumar</h4>
+                    <p>Head of AI</p>
+                </div>
+                <div class="team-member">
+                    <div class="avatar">👩‍💼</div>
+                    <h4>Emma Wilson</h4>
+                    <p>VP Sales</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 DipenTech. All rights reserved.</p>
+    </footer>
+</body>
+</html>
